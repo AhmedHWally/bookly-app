@@ -1,6 +1,7 @@
 import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
-import 'package:bookly/core/utils/functions/lunch_url.dart';
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/widgets/custom_button.dart';
@@ -25,7 +26,9 @@ class BooksAction extends StatelessWidget {
         Expanded(
             child: CustomButton(
           onPressed: () {
-            launchCustomUrl(context, bookModel.volumeInfo.previewLink);
+            // launchCustomUrl(context, bookModel.volumeInfo.previewLink);
+            GoRouter.of(context)
+                .push(AppRouter.kBookPreviewView, extra: bookModel);
           },
           backGroundColor: const Color(0xffEF8262),
           radius: const BorderRadius.only(

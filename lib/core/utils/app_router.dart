@@ -1,5 +1,6 @@
 import 'package:bookly/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/Features/home/presentation/views/book_details_view.dart';
+import 'package:bookly/Features/home/presentation/views/book_preview_view.dart';
 import 'package:bookly/Features/home/presentation/views/home_view.dart';
 import 'package:bookly/Features/search/data/repos/search_repo_impl.dart';
 import 'package:bookly/Features/search/presentation/manager/search_books_cubit.dart/search_books_cubit.dart';
@@ -16,11 +17,17 @@ abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kBookDetailsView = '/bookDetailsView';
   static const kSearchView = '/searchView';
+  static const kBookPreviewView = '/bookPreviewView';
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
+      ),
+      GoRoute(
+        path: kBookPreviewView,
+        builder: (context, state) =>
+            BookPreviewView(bookModel: state.extra as BookModel),
       ),
       GoRoute(
         path: kHomeView,
